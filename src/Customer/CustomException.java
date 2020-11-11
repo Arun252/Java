@@ -1,12 +1,12 @@
-package Bank;
+package Customer;
 
 public class CustomException extends Exception {
     String s;
-    CustomException(String a) {
-        this.s=a;
+     public CustomException(String s) {
+        this.s=s;
     }
     @Override
     public String toString() {
-        return ""+s;
+         return " " + s;
     }
 }

@@ -1,0 +1,25 @@
+Bank Application:
+
+Customer Package:
+Customer:
+Variable of type Details.
+Variable of Type Account.
+
+Details:
+name, address, contact no.
+
+Custom Exception:
+String which is used to return a message.
+
+
+Account Package:
+Account:
+balance, account no, List of Transactions
+    Savings extends Account.
+    Fixed deposit extends Account.
+    AccType:    Savings
+                Fixed Deposit
+Transactions:
+amount, date, type: Deposit.
+                    Withdrawal.
+
