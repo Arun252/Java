@@ -1,6 +1,8 @@
 package Account;
 
 import Customer.CustomException;
+import enums.AccType;
+import enums.TransactionType;
 
 import java.util.ArrayList;
 
@@ -47,7 +49,7 @@ public class Savings extends Account {
     }
 
     public void previoustransactions() {
-        transactions.forEach(System.out::println);
+        System.out.println(transactions.toString());
     }
 
     @Override

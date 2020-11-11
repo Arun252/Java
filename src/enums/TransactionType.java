@@ -1,4 +1,4 @@
-package Account;
+package enums;
 
 public enum TransactionType {
     DEPOSIT,

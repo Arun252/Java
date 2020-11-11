@@ -16,7 +16,10 @@ Account Package:
 Account:
 balance, account no, List of Transactions
     Savings extends Account.
-    Fixed deposit extends Account.
+    Fixed deposit extends Account:  duration
+                                    rate
+                                    principle
+                                    interest
     AccType:    Savings
                 Fixed Deposit
 Transactions:

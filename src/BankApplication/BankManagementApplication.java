@@ -1,11 +1,11 @@
 package BankApplication;
 
-import Account.Account;
-
-import java.util.Map;
 import java.util.Scanner;
-import Account.*;
+
+import Account.FixedDp;
+import Account.Savings;
 import Customer.*;
+import enums.AccType;
 
 public class BankManagementApplication {
 
@@ -39,6 +39,48 @@ public class BankManagementApplication {
                 System.out.println("D. Previous Transactions");
                 System.out.println("E. Exit");
 
+                Customer obj = new Customer(n,a,c,t,time,p);
+
+                do {
+                    System.out.println();
+                    System.out.println("Enter your option: ");
+                    o= in.next().charAt(0);
+                    System.out.println();
+                    switch(o)
+                    {
+                        case 'A':
+                            ((Savings)(obj.getAccount())).balance();
+                            break;
+                        case 'B':
+                            System.out.println("Please enter an amount to deposit: ");
+                            int d= in.nextInt();
+                            System.out.println();
+                            try {
+                                ((Savings)(obj.getAccount())).deposit(d);
+                            } catch(CustomException e) {
+
+                            }
+                            break;
+                        case 'C':
+                            System.out.println("Please enter an amount to withdraw: ");
+                            int w= in.nextInt();
+                            System.out.println();
+                            try {
+                                ((Savings)(obj.getAccount())).withdraw(w);
+                            } catch(CustomException e) {
+                                System.out.println(e.toString());
+                            }
+                            break;
+                        case 'D':
+                            ((Savings)(obj.getAccount())).previoustransactions();
+                            break;
+                        case 'E':
+                            System.out.println("Thank you");
+                            break;
+                    }
+                }
+                while(o!='E');
+
             }
             else if(b.equals("FIXEDDEPOSIT")|| b.equals("fixed deposit")) {
                 t= AccType.FIXEDDEPOSIT;
@@ -52,48 +94,34 @@ public class BankManagementApplication {
                 System.out.println("B. Deposit cash");
                 System.out.println("E. Exit");
 
-            }
-        Customer obj = new Customer(n,a,c,t,time,p);
+                Customer obj = new Customer(n,a,c,t,time,p);
 
-//        do {
-//            System.out.println();
-//            System.out.println("Enter your option: ");
-//            o= in.next().charAt(0);
-//            System.out.println();
-//            switch(o)
-//            {
-//                case 'A':
-//                    obj.balance();
-//                    break;
-//                case 'B':
-//                    System.out.println("Please enter an amount to deposit: ");
-//                    int d= in.nextInt();
-//                    System.out.println();
-//                    try {
-//                        obj.deposit(d);
-//                    } catch(CustomException e) {
-//
-//                    }
-//                    break;
-//                case 'C':
-//                    System.out.println("Please enter an amount to withdraw: ");
-//                    int w= in.nextInt();
-//                    System.out.println();
-//                    try {
-//                        obj.withdraw(w);
-//                    } catch(CustomException e) {
-//                        System.out.println(e.toString()); // Ask why it does to return anything.
-//                    }
-//                    break;
-//                case 'D':
-//                    obj.transaction();
-//                    break;
-//                case 'E':
-//                    System.out.println("Thank you");
-//                    break;
-//            }
-//        }
-//        while(o!='E');
-//
+                do {
+                    System.out.println();
+                    System.out.println("Enter your option: ");
+                    o= in.next().charAt(0);
+                    System.out.println();
+                    switch(o)
+                    {
+                        case 'A':
+                            System.out.println(((FixedDp)(obj.getAccount())).simpleInterest());
+                            break;
+                        case 'B':
+                            try {
+                                ((FixedDp)(obj.getAccount())).deposit(p);
+                            } catch(CustomException e) {
+
+                            }
+                            break;
+                        case 'E':
+                            System.out.println("Thank you");
+                            break;
+                    }
+                }
+                while(o!='E');
+
+            }
+
+
     }
 }

@@ -1,5 +1,7 @@
 package Account;
 
+import enums.AccType;
+
 import java.util.List;
 
 public abstract class Account {

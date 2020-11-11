@@ -1,11 +1,16 @@
 package Customer;
 
 import Account.*;
-import Customer.Details;
+import enums.AccType;
 
 public class Customer {
     Details detail;
     Account account;
+
+    public Account getAccount() {
+        return account;
+    }
+
     public Customer(String name, String accno, Long contact, AccType type, int t, int principle) {
         Details obj= new Details(name, contact);
         if(AccType.SAVINGS.equals(type)) {
