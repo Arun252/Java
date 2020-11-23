@@ -19,3 +19,5 @@ public class Postgresmanager {
             return connection;
     }
 }
+//Singleton design pattern is present in java where an object of a class y is created and is present in memory. When a class x tries to access this object the memory returns object of class y. and when  a new class tries to create an object of the type y, java returns this same object instead of creating multiple objects of same class.
+//example is the connection class mentioned above. This is called dependency injection in java and Spring boot. this is called tupple sort in data structure where nodes are connected in graph.

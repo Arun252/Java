@@ -1,12 +1,15 @@
 package Account;
 
+import Database.Postgresmanager;
 import enums.AccType;
 
+import java.sql.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public abstract class Account {
     int balance;
-    List<Transactions> transactions;
     private String accountno;
 
     public String getAccountno() {
@@ -24,4 +27,35 @@ public abstract class Account {
         this.balance = balance;
 
     }
+    public void save() {
+        Connection c= null;
+        try {
+            c= Postgresmanager.getConnection();
+            PreparedStatement preparedStatement = c.prepareStatement("insert into Account( balance, accountno, acctype) values (?,?,?)");
+            preparedStatement.setInt(1, balance);
+            preparedStatement.setString(2, accountno);
+            preparedStatement.setObject(3, getAccType(),Types.OTHER);
+            preparedStatement.execute();
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public long getaccid(String accno) {
+        Connection c= null;
+        try {
+            c= Postgresmanager.getConnection();
+            PreparedStatement preparedStatement = c.prepareStatement("select accid from account where accountno=?");
+            preparedStatement.setString(1, accno);
+            ResultSet resultSet= preparedStatement.executeQuery();
+            resultSet.next();
+            return resultSet.getLong("accid");
+            }
+        catch(SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
 }
+

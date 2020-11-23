@@ -18,6 +18,7 @@ public class BankManagementApplication {
         System.out.println("Please enter your details in the given format: ");
         System.out.println("Name: ");
         System.out.println("Account no: ");
+        System.out.println("Address :");
         System.out.println("Contact no: ");
         System.out.println("Account type: ");
         System.out.println();
@@ -25,6 +26,7 @@ public class BankManagementApplication {
         int p = 0;
         String n= in.next();
         String a= in.next();
+        String h= in.next();
         Long c= in.nextLong();
         String b= in.next();
         AccType t =null;
@@ -39,7 +41,8 @@ public class BankManagementApplication {
                 System.out.println("D. Previous Transactions");
                 System.out.println("E. Exit");
 
-                Customer obj = new Customer(n,a,c,t,time,p);
+                Customer obj = new Customer(n,a,h,c,t,time,p);
+                obj.save();
 
                 do {
                     System.out.println();
@@ -71,9 +74,9 @@ public class BankManagementApplication {
                                 System.out.println(e.toString());
                             }
                             break;
-                        case 'D':
-                            ((Savings)(obj.getAccount())).previoustransactions();
-                            break;
+//                        case 'D':
+//                            ((Savings)(obj.getAccount())).previoustransactions();
+//                            break;
                         case 'E':
                             System.out.println("Thank you");
                             break;
@@ -94,7 +97,8 @@ public class BankManagementApplication {
                 System.out.println("B. Deposit cash");
                 System.out.println("E. Exit");
 
-                Customer obj = new Customer(n,a,c,t,time,p);
+                Customer obj = new Customer(n,a,h,c,t,time,p);
+                obj.save();
 
                 do {
                     System.out.println();

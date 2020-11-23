@@ -27,12 +27,9 @@ public class FixedDp extends Account{
         a= principle;
         if (a != 0) {
             balance += a;
-            Transactions obj = new Transactions(a,10112020, TransactionType.DEPOSIT);
+            Transactions obj = new Transactions(a,"10112020", TransactionType.DEPOSIT);
             System.out.println("Amount deposited: Rs." + a);
-            if(transactions==null) {
-                transactions= new ArrayList<>();
-            }
-            transactions.add(obj);
+
         }
         else {
             throw new CustomException("Invalid deposit amount");
